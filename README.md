@@ -16,7 +16,7 @@ servidor web, monitor de red, SSH, base de datos, DHCP, DNS y FTP, desplegada en
 
 | Hostname | Rol | Red | IP |
 |---|---|---|---|
-| R-N06 (alias `R`) | Router, NAT, firewall, DNS, DHCP, Uptime Kuma | NAT / DMZ / Intranet | DHCP Isard / 10.6.1.1 / 10.6.2.1 |
+| R-N06 | Router, NAT, firewall, DNS, DHCP, Uptime Kuma | NAT / DMZ / Intranet | DHCP Isard / 10.6.1.1 / 10.6.2.1 |
 | W-N06 | Servidor web + aplicación | DMZ | 10.6.1.10 |
 | F-N06 | Servidor FTP | DMZ | 10.6.1.20 |
 | B-N06 | MySQL | Intranet | 10.6.2.10 |
