@@ -25,6 +25,10 @@ servidor web, monitor de red, SSH, base de datos, DHCP, DNS y FTP, desplegada en
 
 Dominio interno: `g06.lan`. Usuario común en todos los sistemas y aplicaciones: **bchecker / bchecker121**.
 
+## Diagrama de red
+
+![Diagrama de Arquitectura de Red](docs/diagrama.png)
+
 ## Documentación
 
 1. [Arquitectura y direccionamiento](docs/01-arquitectura.md)
