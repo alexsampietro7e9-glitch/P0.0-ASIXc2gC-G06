@@ -1,7 +1,7 @@
 # P0.0-ASIXc2gC-G06 — Despliegue de infraestructura
 
 Proyecto intermodular (Módulo 0379). Infraestructura para una aplicación multicapa:
-servidor web, monitor de red, SSH, base de datos, DHCP, DNS y FTP, desplegada en **IsardVDI**.
+servidor web, monitor de red, SSH, base de datos, DHCP, DNS y FTP, desplegada en **IsardVDI (Nuvulet)**.
 
 ## Equipo 06
 
