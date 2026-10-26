@@ -1,6 +1,6 @@
 # P0.0-ASIXc2gC-G06 — Despliegue de Infraestructura Multicapa
 
-Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de red y aplicación multicapa en **IsardVDI**: Router con NAT/Firewall, Servidor Web (PHP/Apache), Base de Datos MySQL (con dataset CSV OpenData Barcelona), Servidor FTP, Monitor de Red (Uptime Kuma), DNS, DHCP y acceso unificado por SSH[cite: 1, 3, 4].
+Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de red y aplicación multicapa en **IsardVDI**: Router con NAT/Firewall, Servidor Web (PHP/Apache), Base de Datos MySQL (con dataset CSV OpenData Barcelona), Servidor FTP, Monitor de Red (Uptime Kuma), DNS, DHCP y acceso unificado por SSH.
 
 ---
 
@@ -26,6 +26,10 @@ Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de r
 
 * **Dominio interno:** `g06.lan`
 * **Credenciales comunes de administración:** `bchecker` / `bchecker121`
+
+### Diagrama de Red
+
+![Diagrama de Arquitectura de Red](docs/diagrama.png)
 
 ---
 
@@ -62,6 +66,7 @@ Toda la documentación está categorizada según la máquina correspondiente del
 .
 ├── README.md
 ├── docs/                     # Documentación modular organizada por máquina
+│   ├── diagrama.png          # Esquema y arquitectura gráfica de la red
 │   ├── 01-r-n06/             # Router, NAT, Firewall, DNS, DHCP, Uptime Kuma
 │   ├── 02-w-n06/             # Servidor Web Apache + App PHP
 │   ├── 03-f-n06/             # Servidor VSFTPD
