@@ -1,60 +1,76 @@
-# P0.0-ASIXc2gC-G06 — Despliegue de infraestructura
+# P0.0-ASIXc2gC-G06 — Despliegue de Infraestructura Multicapa
 
-Proyecto intermodular (Módulo 0379). Infraestructura para una aplicación multicapa:
-servidor web, monitor de red, SSH, base de datos, DHCP, DNS y FTP, desplegada en **IsardVDI (Nuvulet)**.
+Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de red y aplicación multicapa en **IsardVDI**: Router con NAT/Firewall, Servidor Web (PHP/Apache), Base de Datos MySQL (con dataset CSV OpenData Barcelona), Servidor FTP, Monitor de Red (Uptime Kuma), DNS, DHCP y acceso unificado por SSH[cite: 1, 3, 4].
+
+---
 
 ## Equipo 06
 
-| Persona | Responsabilidad |
+| Persona | Responsabilidad Principal |
 |---|---|
-| **Aman** | Router R-N06 (NAT + firewall), DNS, DHCP, monitor de red, clientes Windows y Linux |
-| **Alex** | B-N06 (MySQL + importación del CSV), F-N06 (FTP) |
-| **Jheremy** | W-N06 (Apache + app), repositorio GitHub, documentación y diagrama |
-| **Todos** | SSH y usuario `bchecker` en sus máquinas, tareas en ProofHub |
+| **Aman** | Router `R-N06` (NAT, Firewall, DNS Bind9, DHCP, Uptime Kuma) |
+| **Alex** | Base de Datos `B-N06` (MySQL e importación CSV) y Servidor FTP `F-N06` |
+| **Jheremy** | Servidor Web `W-N06` (Apache + App PHP), Git, Documentación y Diagrama |
+| **Todos** | Usuario `bchecker` y SSH en sus máquinas, gestión de tareas en ProofHub |
 
-## Máquinas
+---
 
-| Hostname | Rol | Red | IP |
+## Arquitectura de Máquinas y Redes
+
+| Hostname | Rol / Servicios | Zona de Red | Dirección IP / Rango |
 |---|---|---|---|
-| R-N06 | Router, NAT, firewall, DNS, DHCP, Uptime Kuma | NAT / DMZ / Intranet | DHCP Isard / 10.6.1.1 / 10.6.2.1 |
-| W-N06 | Servidor web + aplicación | DMZ | 10.6.1.10 |
-| F-N06 | Servidor FTP | DMZ | 10.6.1.20 |
-| B-N06 | MySQL | Intranet | 10.6.2.10 |
-| PC Windows | Cliente | Intranet | DHCP (10.6.2.100–200) |
-| PC Linux | Cliente | Intranet | DHCP (10.6.2.100–200) |
+| **R-N06** | Router, NAT, Firewall, DNS (`bind9`), DHCP, Uptime Kuma | NAT / DMZ / Intranet | IP Isard / `10.6.1.1` / `10.6.2.1` |
+| **W-N06** | Servidor Web (Apache + PHP) | DMZ | `10.6.1.10` |
+| **F-N06** | Servidor FTP (`vsftpd` con chroot) | DMZ | `10.6.1.20` |
+| **B-N06** | Base de Datos MySQL | Intranet | `10.6.2.10` |
 
-Dominio interno: `g06.lan`. Usuario común en todos los sistemas y aplicaciones: **bchecker / bchecker121**.
+* **Dominio interno:** `g06.lan`
+* **Credenciales comunes de administración:** `bchecker` / `bchecker121`
 
-## Diagrama de red
+---
 
-![Diagrama de Arquitectura de Red](docs/diagrama.png)
+## Índice de Documentación
 
-## Documentación
+Toda la documentación está categorizada según la máquina correspondiente del proyecto y los requerimientos transversales de la práctica:
 
-1. [Arquitectura y direccionamiento](docs/01-arquitectura.md)
-2. [Router R-N06](docs/02-router-r-n06.md)
-3. [DNS y DHCP](docs/03-dns-dhcp.md)
-4. [Monitor de red](docs/04-monitor-red.md)
-5. [Base de datos B-N06](docs/05-bd-b-n06.md)
-6. [Servidor web y aplicación W-N06](docs/06-servidor-web-w-n06.md)
-7. [Servidor FTP F-N06](docs/07-servidor-ftp-f-n06.md)
-8. [SSH y usuario bchecker](docs/08-ssh-bchecker.md)
-9. [Control de versiones y despliegue](docs/09-control-versiones.md)
-10. [Clientes](docs/10-clientes.md)
-11. [Pruebas](docs/11-pruebas.md)
-12. [Backlog y sprints (ProofHub)](https://itecbcn.proofhub.com/bapplite/#app/todos/project-9789643108/list-271759615776)
+### Máquina R-N06 (Router & Servicios de Red)
+* [Netplan, NAT y Firewall (iptables/nftables)](docs/01-r-n06/01-red-firewall.md)
+* [DNS (Bind9) y Servidor DHCP](docs/01-r-n06/02-dns-dhcp.md)
+* [Monitor de Red (Uptime Kuma en puerto 3001)](docs/01-r-n06/03-monitor.md)
 
-## Estructura del repositorio
+### Máquina W-N06 (Servidor Web)
+* [Apache, PHP y Despliegue de Aplicación Web](docs/02-w-n06/01-web-app.md)
 
-```
+### Máquina F-N06 (Servidor FTP)
+* [Servicio VSFTPD y Configuración de Chroot](docs/03-f-n06/01-ftp.md)
+
+### Máquina B-N06 (Base de Datos)
+* [MySQL, Esquema de Datos e Importación de CSV](docs/04-b-n06/01-mysql.md)
+
+### Gestión Transversal y Proyecto
+* [Diagrama y Diseño de Arquitectura de Red](docs/00-global/00-arquitectura.md)
+* [Acceso SSH y Usuario `bchecker`](docs/00-global/01-ssh-usuarios.md)
+* [Control de Versiones (Git, SSH Keys y Workflow)](docs/00-global/02-git-despliegue.md)
+* [Plan de Pruebas e Integración del Sistema](docs/00-global/03-pruebas.md)
+* [Backlog, Sprints y Tareas de ProofHub](docs/00-global/backlog.md)
+
+---
+
+## Estructura del Repositorio
+
+```text
 .
 ├── README.md
-├── docs/                    Documentación Markdown
-├── config/
-│   ├── r-n06/               netplan, firewall, bind9, isc-dhcp-server
-│   ├── w-n06/               netplan
-│   ├── f-n06/               netplan, vsftpd
-│   └── b-n06/               netplan, SQL de creación
-├── app/                     Aplicación web (PHP) que muestra la tabla
-└── scripts/                 crear_bchecker.sh, import_csv.py
-```
+├── docs/                     # Documentación modular organizada por máquina
+│   ├── 01-r-n06/             # Router, NAT, Firewall, DNS, DHCP, Uptime Kuma
+│   ├── 02-w-n06/             # Servidor Web Apache + App PHP
+│   ├── 03-f-n06/             # Servidor VSFTPD
+│   ├── 04-b-n06/             # Base de Datos MySQL y CSV
+│   └── 00-global/            # Arquitectura, SSH, Git, Pruebas y ProofHub
+├── config/                   # Archivos de configuración de cada servidor
+│   ├── r-n06/
+│   ├── w-n06/
+│   ├── f-n06/
+│   └── b-n06/
+├── app/                      # Código fuente de la aplicación Web (PHP)
+└── scripts/                  # Scripts de creación de usuario bchecker e importación CSV
