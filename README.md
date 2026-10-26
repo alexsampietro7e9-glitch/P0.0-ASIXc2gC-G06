@@ -1,6 +1,6 @@
 # P0.0-ASIXc2gC-G06 — Despliegue de Infraestructura Multicapa
 
-Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de red y aplicación multicapa en **IsardVDI**: Router con NAT/Firewall, Servidor Web (PHP/Apache), Base de Datos MySQL (con dataset CSV OpenData Barcelona), Servidor FTP, Monitor de Red (Uptime Kuma), DNS, DHCP y acceso unificado por SSH.
+Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de red y aplicación multicapa en **NuvuletVDI**: Router con NAT/Firewall, Servidor Web (PHP/Apache), Base de Datos MySQL (con dataset CSV OpenData Barcelona), Servidor FTP, Monitor de Red (Uptime Kuma), DNS, DHCP y acceso unificado por SSH.
 
 ---
 
@@ -19,7 +19,7 @@ Proyecto intermodular (**Módulo 0379**). Despliegue de una infraestructura de r
 
 | Hostname | Rol / Servicios | Zona de Red | Dirección IP / Rango |
 |---|---|---|---|
-| **R-N06** | Router, NAT, Firewall, DNS (`bind9`), DHCP, Uptime Kuma | NAT / DMZ / Intranet | IP Isard / `10.6.1.1` / `10.6.2.1` |
+| **R-N06** | Router, NAT, Firewall, DNS (`bind9`), DHCP, Uptime Kuma | NAT / DMZ / Intranet | IP NuvuletVDI / `10.6.1.1` / `10.6.2.1` |
 | **W-N06** | Servidor Web (Apache + PHP) | DMZ | `10.6.1.10` |
 | **F-N06** | Servidor FTP (`vsftpd` con chroot) | DMZ | `10.6.1.20` |
 | **B-N06** | Base de Datos MySQL | Intranet | `10.6.2.10` |
