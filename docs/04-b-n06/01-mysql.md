@@ -122,8 +122,8 @@ sudo systemctl status ssh
 ss -tlnp | grep :22
 ```
 
-![Instalación de openssh-server](img/09-apt-ssh.png)
-![Estado del servicio SSH](img/10-ssh-status.png)
+![Instalación de openssh-server](09-apt-ssh.png)
+![Estado del servicio SSH](10-ssh-status.png)
 
 Prueba de conexión desde una máquina cliente:
 
@@ -131,7 +131,7 @@ Prueba de conexión desde una máquina cliente:
 ssh isard@10.6.2.10
 ```
 
-![Conexión SSH desde el cliente](img/11-ssh-cliente.png)
+![Conexión SSH desde el cliente](11-ssh-cliente.png)
 
 ## 6. Descarga y preparación del CSV
 
@@ -143,7 +143,7 @@ Se descarga el CSV de equipamientos desde OpenData Barcelona:
 wget -O /tmp/equipaments.csv "https://opendata-ajuntament.barcelona.cat/data/dataset/f36b60f2-9541-4d08-b0f9-b0a9313fab3d/resource/29d9ff10-6892-4f16-9012-d5c4997857e7/download"
 ```
 
-![Descarga del CSV](img/12-wget-csv.png)
+![Descarga del CSV](12-wget-csv.png)
 
 ### 6.2 Inspección
 
@@ -153,11 +153,11 @@ file /tmp/equipaments.csv
 wc -l /tmp/equipaments.csv
 ```
 
-![Cabecera del CSV](img/13-head-csv.png)
+![Cabecera del CSV](13-head-csv.png)
 
 El fichero está en **UTF-16 little-endian** y tiene 2710 líneas (1 cabecera + 2709 registros):
 
-![Codificación y líneas](img/14-file-wc.png)
+![Codificación y líneas](14-file-wc.png)
 
 ### 6.3 Conversión a UTF-8
 
@@ -186,7 +186,7 @@ print("\nColumnas para LOAD DATA:\n(" + ", ".join(f"`{c}`" for c in cols) + ")")
 PY
 ```
 
-![Script de generación de la tabla](img/15-python-create-table.png)
+![Script de generación de la tabla](15-python-create-table.png)
 
 ### 6.5 Copia al directorio permitido por MySQL
 
@@ -197,7 +197,7 @@ sudo cp /tmp/equipaments_utf8.csv /var/lib/mysql-files/equipaments.csv
 sudo chown mysql:mysql /var/lib/mysql-files/equipaments.csv
 ```
 
-![Copia del CSV](img/16-cp-mysql-files.png)
+![Copia del CSV](16-cp-mysql-files.png)
 
 ## 7. Base de datos, usuarios y permisos
 
@@ -220,7 +220,7 @@ FLUSH PRIVILEGES;
 USE equipaments_db;
 ```
 
-![Creación de BD y usuarios](img/17-create-db-users.png)
+![Creación de BD y usuarios](17-create-db-users.png)
 
 | Usuario | Host permitido | Permisos | Uso |
 |---|---|---|---|
@@ -235,7 +235,7 @@ Se ejecuta el SQL generado:
 sudo mysql equipaments_db < /tmp/create_table.sql
 ```
 
-![Creación de la tabla](img/18-create-table.png)
+![Creación de la tabla](18-create-table.png)
 
 La tabla generada ya incluye una columna `id`, que hacía que el número de columnas no coincidiera con el CSV. Por ello, se elimina `id`, se importa y después se vuelve a añadir como clave primaria:
 
@@ -252,7 +252,7 @@ IGNORE 1 LINES;
 ALTER TABLE equipaments ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY FIRST;
 ```
 
-![Importación con LOAD DATA](img/19-load-data.png)
+![Importación con LOAD DATA](19-load-data.png)
 
 Resultado: **2709 filas importadas**, 0 omitidas, 0 avisos.
 
@@ -271,9 +271,9 @@ sudo ufw enable
 sudo ufw status
 ```
 
-![Instalación de UFW](img/22-apt-ufw.png)
-![Reglas de UFW](img/23-ufw-reglas.png)
-![UFW activo](img/24-ufw-enable.png)
+![Instalación de UFW](22-apt-ufw.png)
+![Reglas de UFW](23-ufw-reglas.png)
+![UFW activo](24-ufw-enable.png)
 
 | Puerto | Protocolo | Origen | Motivo |
 |---|---|---|---|
@@ -289,7 +289,7 @@ sudo iptables -A FORWARD -s 10.6.1.10 -d 10.6.2.10 -p tcp --dport 3306 -j ACCEPT
 sudo iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 ```
 
-![Reglas iptables](img/25-iptables.png)
+![Reglas iptables](25-iptables.png)
 
 > Estas reglas se aplican en el router (ver [Netplan, NAT y Firewall](../01-r-n06/01-red-firewall.md)).
 
@@ -301,8 +301,8 @@ DESCRIBE equipaments;
 SELECT * FROM equipaments LIMIT 1\G
 ```
 
-![Recuento de registros](img/20-count.png)
-![Consulta de ejemplo](img/21-select.png)
+![Recuento de registros](20-count.png)
+![Consulta de ejemplo](21-select.png)
 
 Comprobación desde el servidor web (`W-N06`):
 
