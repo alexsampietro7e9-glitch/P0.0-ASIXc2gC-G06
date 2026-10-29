@@ -57,7 +57,7 @@ network:
         - 10.6.2.10/24
 ```
 
-![Fichero netplan](02-netplan.png)
+![Fichero netplan](img/02-netplan.png)
 
 Se aplica la configuración y se comprueba con `ip a`:
 
