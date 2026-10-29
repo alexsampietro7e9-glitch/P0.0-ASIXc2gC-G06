@@ -35,7 +35,7 @@ sudo adduser bchecker
 sudo usermod -aG sudo bchecker
 ```
 
-![Creación del usuario bchecker](img/01-adduser.png)
+![Creación del usuario bchecker](01-adduser.png)
 
 ## 2. Configuración de red (Netplan)
 
@@ -57,7 +57,7 @@ network:
         - 10.6.2.10/24
 ```
 
-![Fichero netplan](img/02-netplan.png)
+![Fichero netplan](02-netplan.png)
 
 Se aplica la configuración y se comprueba con `ip a`:
 
@@ -66,7 +66,7 @@ sudo netplan apply
 ip a
 ```
 
-![Comprobación de la IP](img/03-ip-a.png)
+![Comprobación de la IP](03-ip-a.png)
 
 ## 3. Instalación de MySQL
 
@@ -75,7 +75,7 @@ sudo apt update
 sudo apt install -y mysql-server
 ```
 
-![Instalación de mysql-server](img/04-apt-mysql.png)
+![Instalación de mysql-server](04-apt-mysql.png)
 
 Se habilita el servicio para que arranque con el sistema:
 
@@ -83,7 +83,7 @@ Se habilita el servicio para que arranque con el sistema:
 sudo systemctl enable --now mysql
 ```
 
-![Habilitar mysql](img/05-enable-mysql.png)
+![Habilitar mysql](05-enable-mysql.png)
 
 ## 4. Acceso remoto a MySQL (`bind-address`)
 
@@ -99,7 +99,7 @@ bind-address            = 10.6.2.10
 mysqlx-bind-address     = 127.0.0.1
 ```
 
-![Fichero mysqld.cnf](img/06-mysqld-cnf.png)
+![Fichero mysqld.cnf](06-mysqld-cnf.png)
 
 Se reinicia el servicio y se comprueba que el puerto 3306 escucha en la IP correcta:
 
@@ -108,8 +108,8 @@ sudo systemctl restart mysql
 ss -tlnp | grep 3306
 ```
 
-![Reinicio de MySQL](img/07-restart-mysql.png)
-![Puerto 3306 en escucha](img/08-ss-3306.png)
+![Reinicio de MySQL](07-restart-mysql.png)
+![Puerto 3306 en escucha](08-ss-3306.png)
 
 ## 5. Instalación de SSH
 
