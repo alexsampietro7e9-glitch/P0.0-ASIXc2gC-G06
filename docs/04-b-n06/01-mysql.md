@@ -35,7 +35,7 @@ sudo adduser bchecker
 sudo usermod -aG sudo bchecker
 ```
 
-![Creación del usuario bchecker](01-adduser.png)
+![Creación del usuario bchecker](img/01-adduser.png)
 
 ## 2. Configuración de red (Netplan)
 
