@@ -8,10 +8,10 @@ Proyecto **módulo 0379**. Despliegue de una infraestructura de red y aplicació
 
 | Persona | Responsabilidad Principal |
 |---|---|
-| **Aman** | Router `R-N06` (NAT, Firewall, DNS Bind9, DHCP, Uptime Kuma) |
+| **Aman** | Router `R-N06` (NAT, Firewall, DNS Bind9, DHCP, Uptime Kuma) y clientes |
 | **Alex** | Base de Datos `B-N06` (MySQL e importación CSV) y Servidor FTP `F-N06` |
 | **Jheremy** | Servidor Web `W-N06` (Apache + App PHP), Git, Documentación y Diagrama |
-| **Todos** | Usuario `bchecker` y SSH en sus máquinas, gestión de tareas en ProofHub |
+| **Todos** | Usuario `bchecker` y SSH en sus máquinas, gestión de tareas en ProofHub (`P0.0-ASIXc2C-G06`) |
 
 ---
 
@@ -51,12 +51,19 @@ Toda la documentación está categorizada según la máquina correspondiente del
 ### Máquina B-N06 (Base de Datos)
 * [MySQL, Esquema de Datos e Importación de CSV](docs/04-b-n06/01-mysql.md)
 
+### Clientes
+* [Clientes Linux y Windows](docs/05-clientes/01-clientes.md)
+
 ### Gestión Transversal y Proyecto
-* [Diagrama y Diseño de Arquitectura de Red](docs/00-global/00-arquitectura.md)
+* [Arquitectura, direccionamiento y decisiones técnicas](docs/00-global/00-arquitectura.md)
 * [Acceso SSH y Usuario `bchecker`](docs/00-global/01-ssh-usuarios.md)
-* [Control de Versiones (Git, SSH Keys y Workflow)](docs/00-global/02-git-despliegue.md)
-* [Plan de Pruebas e Integración del Sistema](docs/00-global/03-pruebas.md)
-* [Backlog, Sprints y Tareas de ProofHub](docs/00-global/backlog.md)
+* [Control de Versiones y Despliegue (Git)](docs/00-global/02-git-despliegue.md)
+* [Rendimiento, Disponibilidad y Juego de Pruebas](docs/00-global/03-pruebas.md)
+* [Estudio Previo de Tecnologías](docs/00-global/04-estudio-previo.md)
+* [Riesgos y Prevención](docs/00-global/05-riesgos.md)
+* [Manual de Usuario](docs/00-global/06-manual-usuario.md)
+* [Manual del Administrador](docs/00-global/07-manual-administrador.md)
+* [Planificación, Backlog y Diario de Trabajo](docs/00-global/backlog.md)
 
 ---
 
@@ -71,11 +78,9 @@ Toda la documentación está categorizada según la máquina correspondiente del
 │   ├── 02-w-n06/             # Servidor Web Apache + App PHP
 │   ├── 03-f-n06/             # Servidor VSFTPD
 │   ├── 04-b-n06/             # Base de Datos MySQL y CSV
-│   └── 00-global/            # Arquitectura, SSH, Git, Pruebas y ProofHub
-├── config/                   # Archivos de configuración de cada servidor
+│   ├── 05-clientes/          # Clientes Linux y Windows
+│   └── 00-global/            # Arquitectura, SSH, Git, pruebas, estudio previo, riesgos, manuales y backlog
+├── config/                   # Copia de las configuraciones aplicadas
 │   ├── r-n06/
-│   ├── w-n06/
-│   ├── f-n06/
 │   └── b-n06/
-├── app/                      # Código fuente de la aplicación Web (PHP)
-└── scripts/                  # Scripts de creación de usuario bchecker e importación CSV
+└── app/                      # Código fuente de la aplicación Web (PHP)
