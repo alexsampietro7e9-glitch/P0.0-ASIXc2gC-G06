@@ -24,46 +24,33 @@ Proyecto **módulo 0379**. Despliegue de una infraestructura de red y aplicació
 | **F-N06** | Servidor FTP (`vsftpd` con chroot) | DMZ | `10.6.1.20` |
 | **B-N06** | Base de Datos MySQL | Intranet | `10.6.2.10` |
 
-* **Dominio interno:** `g06.lan`
-* **Credenciales comunes de administración:** `bchecker` / `bchecker121`
+- **Dominio interno:** `g06.lan`
+- **Credenciales comunes de administración:** `bchecker` / `bchecker121`
 
 ### Diagrama de Red
 
-![Diagrama de Arquitectura de Red](docs/diagrama.png)
+![Diagrama de Arquitectura de Red](docs/img/diagrama.png)
 
 ---
 
 ## Índice de Documentación
 
-Toda la documentación está categorizada según la máquina correspondiente del proyecto y los requerimientos transversales de la práctica:
+Toda la documentación está organizada de forma compacta (un archivo `.md` por máquina) junto con la documentación transversal exigida por la rúbrica de evaluación:
 
-### Máquina R-N06 (Router & Servicios de Red)
-* [Netplan, NAT y Firewall (iptables/nftables)](docs/01-r-n06/01-red-firewall.md)
-* [DNS (Bind9) y Servidor DHCP](docs/01-r-n06/02-dns-dhcp.md)
-* [Monitor de Red (Uptime Kuma en puerto 3001)](docs/01-r-n06/03-monitor.md)
+### Documentación por Máquina
+- [Máquina R-N06 (Router, NAT, Firewall, DNS, DHCP y Uptime Kuma)](docs/01-r-n06.md)
+- [Máquina W-N06 (Servidor Web Apache, PHP y Aplicación Web)](docs/02-w-n06.md)
+- [Máquina F-N06 (Servidor FTP VSFTPD y Chroot)](docs/03-f-n06.md)
+- [Máquina B-N06 (Base de Datos MySQL y Dataset OpenData CSV)](docs/04-b-n06.md)
+- [Clientes (Validación en Clientes Linux y Windows)](docs/05-clientes.md)
 
-### Máquina W-N06 (Servidor Web)
-* [Apache, PHP y Despliegue de Aplicación Web](docs/02-w-n06/01-web-app.md)
-
-### Máquina F-N06 (Servidor FTP)
-* [Servicio VSFTPD y Configuración de Chroot](docs/03-f-n06/01-ftp.md)
-
-### Máquina B-N06 (Base de Datos)
-* [MySQL, Esquema de Datos e Importación de CSV](docs/04-b-n06/01-mysql.md)
-
-### Clientes
-* [Clientes Linux y Windows](docs/05-clientes/01-clientes.md)
-
-### Gestión Transversal y Proyecto
-* [Arquitectura, direccionamiento y decisiones técnicas](docs/00-global/00-arquitectura.md)
-* [Acceso SSH y Usuario `bchecker`](docs/00-global/01-ssh-usuarios.md)
-* [Control de Versiones y Despliegue (Git)](docs/00-global/02-git-despliegue.md)
-* [Rendimiento, Disponibilidad y Juego de Pruebas](docs/00-global/03-pruebas.md)
-* [Estudio Previo de Tecnologías](docs/00-global/04-estudio-previo.md)
-* [Riesgos y Prevención](docs/00-global/05-riesgos.md)
-* [Manual de Usuario](docs/00-global/06-manual-usuario.md)
-* [Manual del Administrador](docs/00-global/07-manual-administrador.md)
-* [Planificación, Backlog y Diario de Trabajo](docs/00-global/backlog.md)
+### Gestión Transversal y Rúbrica de Evaluación (`docs/00-global/`)
+- [01. Arquitectura, Direccionamiento IP, SSH y Git PAT](docs/00-global/01-arquitectura-git.md)
+- [02. Estudio Previo de Mercado y Prevención de Riesgos / PRL](docs/00-global/02-estudi-riscos.md)
+- [03. Planificación por Sprints y Seguimiento en ProofHub](docs/00-global/03-sprints-backlog.md)
+- [04. Criterios de Rendimiento, Disponibilidad y Juego de Pruebas](docs/00-global/04-proves-rendiment.md)
+- [05. Manual de Usuario / Cliente](docs/00-global/05-manual-client.md)
+- [06. Manual del Administrador y Mantenimiento](docs/00-global/06-manual-admin.md)
 
 ---
 
@@ -71,16 +58,32 @@ Toda la documentación está categorizada según la máquina correspondiente del
 
 ```text
 .
-├── README.md
-├── docs/                     # Documentación modular organizada por máquina
-│   ├── diagrama.png          # Esquema y arquitectura gráfica de la red
-│   ├── 01-r-n06/             # Router, NAT, Firewall, DNS, DHCP, Uptime Kuma
-│   ├── 02-w-n06/             # Servidor Web Apache + App PHP
-│   ├── 03-f-n06/             # Servidor VSFTPD
-│   ├── 04-b-n06/             # Base de Datos MySQL y CSV
-│   ├── 05-clientes/          # Clientes Linux y Windows
-│   └── 00-global/            # Arquitectura, SSH, Git, pruebas, estudio previo, riesgos, manuales y backlog
-├── config/                   # Copia de las configuraciones aplicadas
-│   ├── r-n06/
-│   └── b-n06/
-└── app/                      # Código fuente de la aplicación Web (PHP)
+├── README.md                          # Visión general del proyecto e índice
+├── .gitignore                         # Archivos excluidos del control de versiones
+├── app/                               # Código fuente de la aplicación Web (PHP)
+│   ├── db.php
+│   ├── index.php
+│   └── style.css
+├── config/                            # Archivos de configuración reales extraídos de las máquinas
+│   ├── b-n06/                         # mysqld.cnf.fragmento, ufw-reglas.txt, usuarios.sql
+│   ├── f-n06/                         # vsftpd.conf
+│   ├── r-n06/                         # netplan, iptables, named.conf, dhcpd.conf
+│   └── w-n06/                         # netplan, 000-default.conf
+├── docs/                              # Documentación técnica en Markdown e imágenes
+│   ├── img/                           # Diagrama de arquitectura y evidencias visuales (.png)
+│   │   └── diagrama.png
+│   ├── 00-global/                     # Entregables transversales exigidos por rúbrica
+│   │   ├── 01-arquitectura-git.md
+│   │   ├── 02-estudi-riscos.md
+│   │   ├── 03-sprints-backlog.md
+│   │   ├── 04-proves-rendiment.md
+│   │   ├── 05-manual-client.md
+│   │   └── 06-manual-admin.md
+│   ├── 01-r-n06.md                    # Documentación unificada del Router R-N06
+│   ├── 02-w-n06.md                    # Documentación unificada del Servidor Web W-N06
+│   ├── 03-f-n06.md                    # Documentación unificada del Servidor FTP F-N06
+│   ├── 04-b-n06.md                    # Documentación unificada de la Base de Datos B-N06
+│   └── 05-clientes.md                 # Documentación unificada de Clientes
+└── scripts/                           # Scripts Bash y Python de automatización
+    ├── crear_bchecker.sh
+    └── import_csv.py
