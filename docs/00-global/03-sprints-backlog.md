@@ -56,32 +56,32 @@ Al cerrar el sprint teníamos 5 de las 11 tareas finalizadas, 1 en revisión, 3 
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
-| Fer diagrama | – | 19 Oct | SA |
-| Servidor de xarxa | Monitor de red | 26 Oct | AS |
-| Servidor BBDD | Servicio BBDD | 26 Oct | SA |
-| Servidor de xarxa | DHCP | 26 Oct | AS |
+| Fer diagrama | – | 19 Oct | AS |
+| Servidor de xarxa | Monitor de red | 26 Oct | SA |
+| Servidor BBDD | Servicio BBDD | 26 Oct | AS |
+| Servidor de xarxa | DHCP | 26 Oct | SA |
 | Estructurar Github | – | 26 Oct | JS |
 
 **Pendents de Revisió (Review): 1 tarea**
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
-| Servidor de xarxa | DNS | 26 Oct (vencida) | AS |
+| Servidor de xarxa | DNS | 26 Oct (vencida) | SA |
 
 **En curs (Doing): 3 tareas**
 
-| Tarea | Detalle | Fecha | Asignado a |
+| Tarea | Detalle | Fecha | Asignado |
 |---|---|---|---|
-| Servidor Web | SSH | 02 Nov | JS |
-| Servidor Web | Apache | 02 Nov | JS |
-| Servidor de ficheros | – | 02 Nov | SA |
+| Servidor Web | Aplicaion | 09 Nov | JS |
+| Servidor Web | Apache | 09 Nov | JS |
+| Servidor de ficheros | – | 09 Nov | AS |
 
-**Assignades sprint: 2 tareas (pasan al Sprint 2)**
+**Pendiente de hacer**
 
-| Tarea | Fecha | Asignado a |
+| Tarea | Fecha | Asignado |
 |---|---|---|
 | Documentación | 13 Nov | SA, JS y AS |
-| PC linux y windows | 02 Nov | Sin asignar en la captura |
+| PC linux y windows | 02 Nov | SA|
 
 ---
 
@@ -91,22 +91,49 @@ En el segundo sprint trabajamos con tareas más detalladas y con fecha de vencim
 
 ### Inicio del Sprint 2
 
-El tablón de inicio es el mismo que el de cierre del Sprint 1: 5 tareas finalizadas, 1 en revisión, 3 en curso y 2 asignadas, con las fechas indicadas arriba.
+El tablón de inicio es el mismo que el de cierre del Sprint 1: 5 tareas finalizadas, 1 en revisión, 3 en curso y 2 pendientes de hacer, con las fechas indicadas arriba. Sumandole a este las siguientes tareas:
 
-### Cierre del Sprint 2
-
-Al cerrar el sprint el tablón mostraba 21 tareas finalizadas en total (acumulando las del Sprint 1) y no teníamos ninguna tarea bloqueada ni en revisión. Las tareas finalizadas que se ven en la captura son estas:
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
-| Servidor de xarxa | Añadir y verificar en los paneles de Uptime Kuma la comprobación de estado de los servicios web | 09 Nov | AS |
-| Servidor WEB | Desarrollar y publicar el código fuente PHP | 09 Nov | JS |
-| Servidor Web | SSH | 09 Nov | JS |
-| Servidor Web | Apache + PHP | 09 Nov | JS |
-| Documentación | Servidor ficheros | 13 Nov | SA |
-| Servidor de xarxa | Monitor de red | 26 Oct | AS |
+| Reestructurar git hub| añadir y eliminar apartados del proyecto | 02 Nov | JS |
+| Clientes |Hacer cliente windows | 09 Nov | SA |
+| Documentar | Servidor de red | 09 Nov | SA |
+| Documentar | Servidor de Base de dadas | 09 Nov | AS |
+| Documentar | Servidor de ficheros | 09 Nov | AS |
+| Clientes |Hacer cliente linux | 09 Nov | SA |
 
----
+### Cierre del Sprint 2
+
+Al cerrar el sprint el tablón mostraba 18 tareas finalizadas en total (acumulando las del Sprint 1) y no teníamos ninguna tarea bloqueada ni en revisión.
+
+**Finalitzades (Done): 17 tareas**
+
+| Tarea | Detalle | Fecha | Asignado a |
+|---|---|---|---|
+| Fer diagrama | – | 19 Oct | AS |
+| Servidor de xarxa | Monitor de red | 26 Oct | SA |
+| Servidor BBDD | Servicio BBDD | 26 Oct | AS |
+| Servidor de xarxa | DHCP | 26 Oct | SA |
+| Estructurar Github | – | 26 Oct | JS |
+| Reestructurar git hub| añadir y eliminar apartados del proyecto | 02 Nov | JS |
+| Clientes |Hacer cliente windows | 09 Nov | SA |
+| Documentar | Servidor de red | 09 Nov | SA |
+| Documentar | Servidor de Base de dadas | 09 Nov | AS |
+| Documentar | Servidor de ficheros | 09 Nov | AS |
+| Clientes |Hacer cliente linux | 09 Nov | SA |
+| Documentación | 13 Nov | SA, JS y AS |
+| Servidor Web | Aplicaion | 09 Nov | JS |
+| Servidor Web | Apache | 09 Nov | JS |
+| Servidor de ficheros | – | 09 Nov | AS |
+| Servidor de xarxa | DNS | 26 Oct (vencida) | SA |
+
+**En curs (Doing): 3 tareas**
+
+| Tarea | Detalle | Fecha | Asignado |
+|---|---|---|---|
+| Servidor web | Documentar la configuració del servidor web i la publicació de l'App| Nov 09 | JS |
+
 
 ## Sprint 3: documentación, comprobaciones y cierre del servidor web
 
