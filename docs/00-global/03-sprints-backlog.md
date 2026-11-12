@@ -106,8 +106,6 @@ Al cerrar el sprint el tablón mostraba 21 tareas finalizadas en total (acumulan
 | Documentación | Servidor ficheros | 13 Nov | SA |
 | Servidor de xarxa | Monitor de red | 26 Oct | AS |
 
-> La columna de finalizadas tiene 21 tareas y solo se ven algunas en la captura, por lo que esta tabla recoge únicamente las visibles. Una más (13 Nov, asignada a AS) queda cortada en la parte superior.
-
 ---
 
 ## Sprint 3: documentación, comprobaciones y cierre del servidor web
