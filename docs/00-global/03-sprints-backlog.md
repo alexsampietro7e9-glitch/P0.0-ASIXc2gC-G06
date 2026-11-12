@@ -122,7 +122,7 @@ Al cerrar el sprint el tablón mostraba 18 tareas finalizadas en total (acumulan
 | Documentar | Servidor de Base de dadas | 09 Nov | AS |
 | Documentar | Servidor de ficheros | 09 Nov | AS |
 | Clientes |Hacer cliente linux | 09 Nov | SA |
-| Documentación | 13 Nov | SA, JS y AS |
+| Documentación | - | 13 Nov | SA, JS y AS |
 | Servidor Web | Aplicaion | 09 Nov | JS |
 | Servidor Web | Apache | 09 Nov | JS |
 | Servidor de ficheros | – | 09 Nov | AS |
@@ -152,9 +152,9 @@ En el tercer sprint lo planteamos para comprobar el funcionamiento de cada servi
 | Comprobación servidor web | SA y AS |
 | Comprobación servidor Base de dadas | SA y AS |
 | Acabar de documentar las comprobaciones de servidores | SA y AS |
-| Firewall | Auditar las reglas de firewall en R-N06 y B-N06 para asegurar que solo el tráfico permitido circula entre la DMZ y el resto de redes | 13 Nov | SA |
-| Comprobación del servidor de xarxa | – | – | SA y AS |
-| Sprint | Documentación | – | SA |
+| Firewall | SA |
+| Comprobación del servidor de xarxa | SA y AS |
+| Sprint | Documentación | SA |
 
 **En curs (Doing): 4 tareas**
 
