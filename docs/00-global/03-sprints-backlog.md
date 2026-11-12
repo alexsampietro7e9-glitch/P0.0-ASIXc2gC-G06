@@ -24,7 +24,7 @@ En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qu
 
 ## Sprint 1: tareas genéricas
 
-En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio y sin fecha de vencimiento. Al final de este sprint no teníamos ninguna tarea finalizada (0/11).
+En el primer sprint definimos 11 tareas muy generales, pensando que podríamos acabar todos los servicios en el primer sprint dejando los otros dos para revisar y documentar, sin embargo, acabamos dejando varios servicios a la mitad. Asi que para mejor en nuestro siguiente sprint decidimos añadir tareas más específicas , para atacar los distintos objetivos con un orden más claro.
 
 ### Pendents backlog (To Do): 1 tarea
 
@@ -42,6 +42,7 @@ En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio y 
 | Servidor de xarxa | DNS | AS |
 | Servidor de xarxa | Monitor de red | AS |
 | Servidor de fitxers | BBDD MySQL + SSH | SA |
+| Hacer diagrama | - | AS |
 
 > En la captura del tablón del Sprint 1 una de las siete tareas de esta columna queda cortada y no se puede leer.
 
@@ -57,7 +58,7 @@ En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio y 
 
 ## Sprint 2: tareas específicas con fechas
 
-En el segundo sprint ampliamos las tareas y las hicimos más específicas. Además, dividimos el trabajo del servidor de ficheros en dos tareas (*Servidor de ficheros* y *Servidor BBDD*) y asignamos a cada tarea una fecha de vencimiento para controlar mejor el avance. En la captura de seguimiento del sprint teníamos finalizadas 5 de las 11 tareas.
+En el segundo sprint ampliamos las tareas y las hicimos más específicas. Además, dividimos el trabajo del servidor de ficheros en dos tareas (*Servidor de ficheros* y *Servidor BBDD*) y asignamos a cada tarea una fecha de vencimiento para controlar mejor el avance. En la captura de seguimiento del sprint teníamos finalizadas 5 de las 11 tareas. Las tareas finalizadas són las que terminamos en el sprint 1. Las otras las añadimosa medida que avanzabamos en dicho sprint. Al final Nos quedo asi el proofhub para el sprint 2:
 
 ### Tareas del Sprint 2
 
