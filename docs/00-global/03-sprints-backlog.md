@@ -2,7 +2,7 @@
 
 **Proyecto:** P0.0-ASIXc2C-G06 – Servidor Web
 
-En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qué tareas hemos definido y quién se ha encargado de cada una. Gestionamos las tareas en un tablón Kanban con las columnas *Pendents backlog (To Do)*, *Assignades sprint*, *En curs (Doing)*, *Bloquejades (Block)*, *Pendents de Revisió (Review)* y *Finalitzades (Done)*.
+En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qué tareas hemos definido y quién se ha encargado de cada una. Gestionamos las tareas en un tablón de proofhub con las columnas *Pendents backlog (To Do)*, *Assignades sprint*, *En curs (Doing)*, *Bloquejades (Block)*, *Pendents de Revisió (Review)* y *Finalitzades (Done)*.
 
 ## Equipo
 
