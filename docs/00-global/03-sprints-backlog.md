@@ -158,9 +158,9 @@ En el tercer sprint lo planteamos para comprobar el funcionamiento de cada servi
 
 **En curs (Doing): 4 tareas**
 
-| Tarea | Detalle | Fecha | Asignado a |
-|---|---|---|---|
-| Documentar la configuració del servidor web i la publicació de l'App | – | 09 Nov (vencida) | JS |
+| Tarea | Fecha | Asignado a |
+|---|---|---|
+| Documentar la configuració del servidor web i la publicació de l'App | 09 Nov (vencida) | JS |
 
 
 ### Pendiente del servidor web
