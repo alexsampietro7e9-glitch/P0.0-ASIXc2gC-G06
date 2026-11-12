@@ -137,11 +137,11 @@ Al cerrar el sprint el tablón mostraba 18 tareas finalizadas en total (acumulan
 
 ## Sprint 3: documentación, comprobaciones y cierre del servidor web
 
-En el tercer sprint nos centramos en documentar todo lo que hemos montado, comprobar que cada servidor funciona correctamente, auditar el firewall y cerrar el servidor web. Empezamos con el backlog vacío.
+En el tercer sprint lo planteamos para comprobar el funcionamiento de cada servicio, auditar el firewall y cerrar el servidor web, además de añadir cierta parte de documentación que nos faltaba por poner de la que no eramos concientes (los manuales, la arquitectura y la documentación de cada sprint). Empezamos con el backlog vacío.
 
 ### Inicio del Sprint 3
 
-**Assignades sprint: 7 tareas**
+**Assignades sprint: 10 tareas**
 
 | Tarea | Asignado a |
 |---|---|
@@ -152,15 +152,16 @@ En el tercer sprint nos centramos en documentar todo lo que hemos montado, compr
 | Comprobación servidor web | SA y AS |
 | Comprobación servidor Base de dadas | SA y AS |
 | Acabar de documentar las comprobaciones de servidores | SA y AS |
+| Firewall | Auditar las reglas de firewall en R-N06 y B-N06 para asegurar que solo el tráfico permitido circula entre la DMZ y el resto de redes | 13 Nov | SA |
+| Comprobación del servidor de xarxa | – | – | SA y AS |
+| Sprint | Documentación | – | SA |
 
 **En curs (Doing): 4 tareas**
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
 | Documentar la configuració del servidor web i la publicació de l'App | – | 09 Nov (vencida) | JS |
-| Sprint | Documentación | – | SA |
-| Firewall | Auditar las reglas de firewall en R-N06 y B-N06 para asegurar que solo el tráfico permitido circula entre la DMZ y el resto de redes | 13 Nov | AS |
-| Comprobación del servidor de xarxa | – | – | SA y AS |
+
 
 ### Pendiente del servidor web
 
