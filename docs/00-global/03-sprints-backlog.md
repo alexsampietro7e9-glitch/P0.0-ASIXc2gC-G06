@@ -178,7 +178,7 @@ Pendiente de completar cuando cerremos el sprint.
 | Integrante | Sprint 1 | Sprint 2 | Sprint 3 |
 |---|---|---|---|
 | **JS** | Estructurar Github; Servidor Web SSH y Apache (en curso) | Servidor Web SSH, Apache + PHP y código PHP | Documentar la configuración del servidor web y la publicación de la App |
-| **SA** | Fer diagrama y Servidor BBDD; Servidor de ficheros (en curso) | Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
-| **AS** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y comprobación de estado de los servicios web | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
+| **AS** | Fer diagrama y Servidor BBDD; Servidor de ficheros | Configuración y Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
+| **SA** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y clientes (linux y windows) | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
 
 La tarea de documentación general la hemos compartido los tres en todos los sprints.
