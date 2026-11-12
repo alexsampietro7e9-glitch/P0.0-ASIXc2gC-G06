@@ -44,7 +44,6 @@ En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio, p
 | Servidor de xarxa | DNS | AS |
 | Servidor de xarxa | Monitor de red | AS |
 | Servidor de fitxers | BBDD MySQL + SSH | SA |
-|---|---|---|
 | Servidor Web | SSH | JS |
 | Servidor Web | Apache | JS |
 | Fer diagrama | – | SA |
