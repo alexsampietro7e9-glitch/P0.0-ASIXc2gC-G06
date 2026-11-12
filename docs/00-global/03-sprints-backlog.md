@@ -2,7 +2,7 @@
 
 **Proyecto:** P0.0-ASIXc2C-G06 – Servidor Web
 
-En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qué tareas hemos definido y quién se ha encargado de cada una. Gestionamos las tareas en un tablón de proofhub con las columnas *Pendents backlog (To Do)*, *Assignades sprint*, *En curs (Doing)*, *Bloquejades (Block)*, *Pendents de Revisió (Review)* y *Finalitzades (Done)*.
+En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qué tareas hemos definido y quién se ha encargado de cada una. Gestionamos las tareas en un tablón Kanban con las columnas *Pendents backlog (To Do)*, *Assignades sprint*, *En curs (Doing)*, *Bloquejades (Block)*, *Pendents de Revisió (Review)* y *Finalitzades (Done)*. Para cada sprint tomamos una captura del tablón al empezar y otra al cerrar, y la del cierre de un sprint coincide con el inicio del siguiente.
 
 ## Equipo
 
@@ -14,25 +14,27 @@ En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qu
 
 ## Resumen de los sprints
 
-| Sprint | Enfoque | Estado |
-|---|---|---|
-| Sprint 1 | Tareas genéricas, agrupadas por servicio y sin fechas | Cerrado |
-| Sprint 2 | Tareas específicas, repartidas por fechas de vencimiento | Cerrado |
-| Sprint 3 | Documentación, comprobaciones de los servidores, firewall y cierre del servidor web | En curso |
+| Sprint | Enfoque | Inicio (tablón) | Cierre (tablón) |
+|---|---|---|---|
+| Sprint 1 | Tareas genéricas por servicio, sin fechas | 0 de 11 finalizadas | 5 de 11 finalizadas |
+| Sprint 2 | Tareas específicas repartidas por fechas | 5 de 11 finalizadas | 21 finalizadas acumuladas |
+| Sprint 3 | Documentación, comprobaciones, firewall y cierre del servidor web | 21 finalizadas acumuladas | En curso |
 
 ---
 
 ## Sprint 1: tareas genéricas
 
-En el primer sprint definimos 11 tareas muy generales, pensando que podríamos acabar todos los servicios en el primer sprint dejando los otros dos para revisar y documentar, sin embargo, acabamos dejando varios servicios a la mitad. Asi que para mejor en nuestro siguiente sprint decidimos añadir tareas más específicas , para atacar los distintos objetivos con un orden más claro.
+En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio, pensando que podríamos acabarlo todos los servisios en el primer sprint.
 
-### Pendents backlog (To Do): 1 tarea
+### Inicio del Sprint 1
+
+**Pendents backlog (To Do): 1 tarea**
 
 | Tarea | Detalle | Asignado a |
 |---|---|---|
 | Servidor Web | Aplicación de prueba | JS |
 
-### Assignades sprint: 7 tareas
+**Assignades sprint: 7 tareas**
 
 | Tarea | Detalle | Asignado a |
 |---|---|---|
@@ -42,54 +44,80 @@ En el primer sprint definimos 11 tareas muy generales, pensando que podríamos a
 | Servidor de xarxa | DNS | AS |
 | Servidor de xarxa | Monitor de red | AS |
 | Servidor de fitxers | BBDD MySQL + SSH | SA |
-| Hacer diagrama | - | AS |
-
-> En la captura del tablón del Sprint 1 una de las siete tareas de esta columna queda cortada y no se puede leer.
-
-### En curs (Doing): 3 tareas
-
-| Tarea | Detalle | Asignado a |
 |---|---|---|
 | Servidor Web | SSH | JS |
 | Servidor Web | Apache | JS |
 | Fer diagrama | – | SA |
 
+### Cierre del Sprint 1
+
+Al cerrar el sprint teníamos 5 de las 11 tareas finalizadas, 1 en revisión, 3 en curso y 2 asignadas. Además, las tareas pasaron a ser más específicas y con fecha: el trabajo de *Servidor de fitxers (BBDD MySQL + SSH)* lo separamos en *Servidor BBDD* y *Servidor de ficheros*, y añadimos *Estructurar Github* y *PC linux y windows*.
+
+**Finalitzades (Done): 5 tareas**
+
+| Tarea | Detalle | Fecha | Asignado a |
+|---|---|---|---|
+| Fer diagrama | – | 19 Oct | SA |
+| Servidor de xarxa | Monitor de red | 26 Oct | AS |
+| Servidor BBDD | Servicio BBDD | 26 Oct | SA |
+| Servidor de xarxa | DHCP | 26 Oct | AS |
+| Estructurar Github | – | 26 Oct | JS |
+
+**Pendents de Revisió (Review): 1 tarea**
+
+| Tarea | Detalle | Fecha | Asignado a |
+|---|---|---|---|
+| Servidor de xarxa | DNS | 26 Oct (vencida) | AS |
+
+**En curs (Doing): 3 tareas**
+
+| Tarea | Detalle | Fecha | Asignado a |
+|---|---|---|---|
+| Servidor Web | SSH | 02 Nov | JS |
+| Servidor Web | Apache | 02 Nov | JS |
+| Servidor de ficheros | – | 02 Nov | SA |
+
+**Assignades sprint: 2 tareas (pasan al Sprint 2)**
+
+| Tarea | Fecha | Asignado a |
+|---|---|---|
+| Documentación | 13 Nov | SA, JS y AS |
+| PC linux y windows | 02 Nov | Sin asignar en la captura |
+
 ---
 
 ## Sprint 2: tareas específicas con fechas
 
-En el segundo sprint ampliamos las tareas y las hicimos más específicas. Además, dividimos el trabajo del servidor de ficheros en dos tareas (*Servidor de ficheros* y *Servidor BBDD*) y asignamos a cada tarea una fecha de vencimiento para controlar mejor el avance. En la captura de seguimiento del sprint teníamos finalizadas 5 de las 11 tareas. Las tareas finalizadas són las que terminamos en el sprint 1. Las otras las añadimosa medida que avanzabamos en dicho sprint. Al final Nos quedo asi el proofhub para el sprint 2:
+En el segundo sprint trabajamos con tareas más detalladas y con fecha de vencimiento. Partimos de las tareas que quedaron abiertas al cerrar el Sprint 1 (DNS en revisión, Servidor Web SSH y Apache, Servidor de ficheros, PC linux y windows y Documentación) y las fuimos desglosando.
 
-### Tareas del Sprint 2
+### Inicio del Sprint 2
 
-| Tarea | Detalle | Fecha | Asignado a | Estado en la captura de seguimiento |
-|---|---|---|---|---|
-| Fer diagrama | – | 19 Oct | SA | Finalizada |
-| Servidor de xarxa | Monitor de red | 26 Oct | AS | Finalizada |
-| Servidor BBDD | Servicio BBDD | 26 Oct | SA | Finalizada |
-| Servidor de xarxa | DHCP | 26 Oct | AS | Finalizada |
-| Estructurar Github | – | 26 Oct | JS | Finalizada |
-| Servidor de xarxa | DNS | 26 Oct | AS | En revisión |
-| Servidor Web | SSH | 02 Nov | JS | En curso |
-| Servidor Web | Apache | 02 Nov | JS | En curso |
-| Servidor de ficheros | – | 02 Nov | SA | En curso |
-| PC linux y windows | – | 02 Nov | Sin asignar en la captura | Asignada al sprint |
-| Documentación | – | 13 Nov | SA, JS y AS | Asignada al sprint |
+El tablón de inicio es el mismo que el de cierre del Sprint 1: 5 tareas finalizadas, 1 en revisión, 3 en curso y 2 asignadas, con las fechas indicadas arriba.
 
-### Evolución respecto al Sprint 1
+### Cierre del Sprint 2
 
-- Los servicios de red (DHCP y Monitor de red) pasaron a finalizados y DNS quedó en revisión.
-- El servidor de ficheros y la base de datos pasaron de ser una sola tarea a dos tareas independientes.
-- El diagrama pasó de En curso a Finalizado.
-- Añadimos tareas nuevas: *Estructurar Github* y *PC linux y windows*.
+Al cerrar el sprint el tablón mostraba 21 tareas finalizadas en total (acumulando las del Sprint 1) y no teníamos ninguna tarea bloqueada ni en revisión. Las tareas finalizadas que se ven en la captura son estas:
+
+| Tarea | Detalle | Fecha | Asignado a |
+|---|---|---|---|
+| Servidor de xarxa | Añadir y verificar en los paneles de Uptime Kuma la comprobación de estado de los servicios web | 09 Nov | AS |
+| Servidor WEB | Desarrollar y publicar el código fuente PHP | 09 Nov | JS |
+| Servidor Web | SSH | 09 Nov | JS |
+| Servidor Web | Apache + PHP | 09 Nov | JS |
+| Documentación | Servidor ficheros | 13 Nov | SA |
+| Servidor de xarxa | Monitor de red | 26 Oct | AS |
+
+> La columna de finalizadas tiene 21 tareas y solo se ven algunas en la captura, por lo que esta tabla recoge únicamente las visibles. Una más (13 Nov, asignada a AS) queda cortada en la parte superior.
 
 ---
 
 ## Sprint 3: documentación, comprobaciones y cierre del servidor web
 
-En el tercer sprint nos centramos en documentar todo lo que hemos montado, comprobar que cada servidor funciona correctamente y cerrar el servidor web. Al abrir el sprint el backlog estaba vacío y en la columna de finalizadas acumulábamos ya 21 tareas de los sprints anteriores y del propio sprint 3.
+En el tercer sprint nos centramos en documentar todo lo que hemos montado, comprobar que cada servidor funciona correctamente, auditar el firewall y cerrar el servidor web. Empezamos con el backlog vacío.
 
-### Assignades sprint: 7 tareas
+### Inicio del Sprint 3
+
+**Assignades sprint: 7 tareas**
 
 | Tarea | Asignado a |
 |---|---|
@@ -101,7 +129,7 @@ En el tercer sprint nos centramos en documentar todo lo que hemos montado, compr
 | Comprobación servidor Base de dadas | SA y AS |
 | Acabar de documentar las comprobaciones de servidores | SA y AS |
 
-### En curs (Doing): 4 tareas
+**En curs (Doing): 4 tareas**
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
@@ -110,21 +138,13 @@ En el tercer sprint nos centramos en documentar todo lo que hemos montado, compr
 | Firewall | Auditar las reglas de firewall en R-N06 y B-N06 para asegurar que solo el tráfico permitido circula entre la DMZ y el resto de redes | 13 Nov | AS |
 | Comprobación del servidor de xarxa | – | – | SA y AS |
 
-### Finalitzades (Done) durante el Sprint 3
-
-| Tarea | Detalle | Fecha | Asignado a |
-|---|---|---|---|
-| Servidor de xarxa | Añadir y verificar en los paneles de Uptime Kuma la comprobación de estado de los servicios web | 09 Nov | AS |
-| Servidor WEB | Desarrollar y publicar el código fuente PHP | 09 Nov | JS |
-| Servidor Web | SSH | 09 Nov | JS |
-| Servidor Web | Apache + PHP | 09 Nov | JS |
-| Documentación | Servidor ficheros | 13 Nov | SA |
-
-> En la captura del Sprint 3 la columna de finalizadas tiene 21 tareas y solo se ven algunas, por lo que esta tabla recoge únicamente las visibles.
-
 ### Pendiente del servidor web
 
-Lo único que nos queda abierto del servidor web es documentar su configuración y la publicación de la aplicación, tarea asignada a JS y con fecha vencida (09 Nov), y terminar de desarrollar la web. Cuando lo cerremos, actualizaremos este documento y lo enlazaremos con la documentación de arquitectura y de administración.
+Del servidor web ya tenemos terminados SSH, Apache + PHP y la publicación del código PHP. Nos falta documentar su configuración y la publicación de la aplicación (tarea de JS, con la fecha del 09 Nov ya vencida) y terminar de desarrollar la web. Cuando lo cerremos, actualizaremos este documento y lo enlazaremos con la documentación de arquitectura y de administración.
+
+### Cierre del Sprint 3
+
+Pendiente de completar cuando cerremos el sprint.
 
 ---
 
@@ -132,8 +152,8 @@ Lo único que nos queda abierto del servidor web es documentar su configuración
 
 | Integrante | Sprint 1 | Sprint 2 | Sprint 3 |
 |---|---|---|---|
-| **JS** | Servidor Web (SSH, Apache y aplicación de prueba) | Estructurar Github, Servidor Web SSH y Apache | Servidor Web (SSH, Apache + PHP y código PHP) y documentación de la configuración del servidor web |
-| **SA** | Servidor de fitxers (BBDD MySQL + SSH) y Fer diagrama | Fer diagrama, Servidor BBDD y Servidor de ficheros | Documentar manual Admin, documentación del servidor de ficheros y comprobaciones de servidores |
-| **AS** | Servidor de xarxa (SSH, DHCP, DNS y Monitor de red) | Servidor de xarxa (DHCP, DNS y Monitor de red) | Documentar Manual clientes y Arquitectura, Firewall, Uptime Kuma y comprobaciones de servidores |
+| **JS** | Estructurar Github; Servidor Web SSH y Apache (en curso) | Servidor Web SSH, Apache + PHP y código PHP | Documentar la configuración del servidor web y la publicación de la App |
+| **SA** | Fer diagrama y Servidor BBDD; Servidor de ficheros (en curso) | Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
+| **AS** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y comprobación de estado de los servicios web | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
 
 La tarea de documentación general la hemos compartido los tres en todos los sprints.
