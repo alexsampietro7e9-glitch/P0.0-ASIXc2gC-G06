@@ -37,7 +37,7 @@ Flujo principal de la aplicación: el cliente pide la página a `W-N06`, y `W-N0
 
 ## 2. Diagrama de red
 
-![Diagrama de arquitectura de red](docs/img/diagrama.png)
+![Diagrama](docs/img/diagrama.png)
 
 
 > **⚠️ PENDIENTE:** el diagrama no recoge `CLI-W-N06` (cliente de pruebas en la DMZ, `10.6.1.50`) que aparece en la documentación del servidor web. Decidir si se incluye o se elimina de la documentación.
