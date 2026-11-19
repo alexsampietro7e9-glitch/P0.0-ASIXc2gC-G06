@@ -39,17 +39,6 @@ Flujo principal de la aplicación: el cliente pide la página a `W-N06`, y `W-N0
 
 ![Diagrama de arquitectura de red](img/diagrama.png)
 
-Versión en texto (se renderiza en GitHub):
-
-```mermaid
-flowchart TB
-    NET((Internet / red Default de Isard)) -->|enp1s0 DHCP| R["R-N06 · Router<br/>NAT + iptables · Bind9 · DHCP · Uptime Kuma :3001"]
-    R -->|"enp2s0 · 10.6.1.1 · DMZ 10.6.1.0/24"| W["W-N06 · 10.6.1.10<br/>Apache + PHP"]
-    R -->|"enp2s0 · DMZ"| F["F-N06 · 10.6.1.20<br/>vsftpd (chroot)"]
-    R -->|"enp3s0 · 10.6.2.1 · Intranet 10.6.2.0/24"| B["B-N06 · 10.6.2.10<br/>MySQL 8.0"]
-    R -->|"enp3s0 · Intranet · DHCP .100-.200"| C["Clientes<br/>PC Linux / PC Windows"]
-    W -. "TCP 3306 (única excepción DMZ → Intranet)" .-> B
-```
 
 > **⚠️ PENDIENTE:** el diagrama no recoge `CLI-W-N06` (cliente de pruebas en la DMZ, `10.6.1.50`) que aparece en la documentación del servidor web. Decidir si se incluye o se elimina de la documentación.
 
