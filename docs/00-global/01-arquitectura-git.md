@@ -338,7 +338,7 @@ Puntos detectados durante la revisión y que conviene reflejar en la memoria com
 |---|---|
 | **Aman** | `R-N06` (NAT, firewall, Bind9, DHCP, Uptime Kuma) y clientes |
 | **Alex** | `B-N06` (MySQL e importación del CSV) y `F-N06` (FTP) |
-| **Jheremy** | `W-N06` (Apache + PHP), Git, documentación y diagrama |
+| **Jheremy** | `W-N06` (Apache + PHP), Git |
 | **Todos** | Usuario `bchecker`, SSH en sus máquinas y gestión de tareas en ProofHub |
 
 ---
