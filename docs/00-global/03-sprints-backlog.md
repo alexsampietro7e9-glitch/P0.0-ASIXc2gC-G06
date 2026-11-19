@@ -9,8 +9,8 @@ En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qu
 | Iniciales | Integrante |
 |---|---|
 | JS | Jheremy Sanchez |
-| SA | Amanpreet Singh |
-| AS | Alex Sampietro |
+| AS | Amanpreet Singh |
+| SA | Alex Sampietro |
 
 ## Resumen de los sprints
 
@@ -57,16 +57,16 @@ Al cerrar el sprint teníamos 5 de las 11 tareas finalizadas, 1 en revisión, 3 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
 | Fer diagrama | – | 19 Oct | AS |
-| Servidor de xarxa | Monitor de red | 26 Oct | SA |
-| Servidor BBDD | Servicio BBDD | 26 Oct | AS |
-| Servidor de xarxa | DHCP | 26 Oct | SA |
+| Servidor de xarxa | Monitor de red | 26 Oct | AS |
+| Servidor BBDD | Servicio BBDD | 26 Oct | SA |
+| Servidor de xarxa | DHCP | 26 Oct | AS |
 | Estructurar Github | – | 26 Oct | JS |
 
 **Pendents de Revisió (Review): 1 tarea**
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
-| Servidor de xarxa | DNS | 26 Oct (vencida) | SA |
+| Servidor de xarxa | DNS | 26 Oct (vencida) | AS |
 
 **En curs (Doing): 3 tareas**
 
@@ -74,14 +74,14 @@ Al cerrar el sprint teníamos 5 de las 11 tareas finalizadas, 1 en revisión, 3 
 |---|---|---|---|
 | Servidor Web | Aplicaion | 09 Nov | JS |
 | Servidor Web | Apache | 09 Nov | JS |
-| Servidor de ficheros | – | 09 Nov | AS |
+| Servidor de ficheros | – | 09 Nov | SA |
 
 **Pendiente de hacer**
 
 | Tarea | Fecha | Asignado |
 |---|---|---|
 | Documentación | 13 Nov | SA, JS y AS |
-| PC linux y windows | 02 Nov | SA|
+| PC linux y windows | 02 Nov | AS|
 
 ---
 
@@ -97,11 +97,11 @@ El tablón de inicio es el mismo que el de cierre del Sprint 1: 5 tareas finaliz
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
 | Reestructurar git hub| añadir y eliminar apartados del proyecto | 02 Nov | JS |
-| Clientes |Hacer cliente windows | 09 Nov | SA |
-| Documentar | Servidor de red | 09 Nov | SA |
-| Documentar | Servidor de Base de dadas | 09 Nov | AS |
-| Documentar | Servidor de ficheros | 09 Nov | AS |
-| Clientes |Hacer cliente linux | 09 Nov | SA |
+| Clientes |Hacer cliente windows | 09 Nov | AS |
+| Documentar | Servidor de red | 09 Nov | AS |
+| Documentar | Servidor de Base de dadas | 09 Nov | SA |
+| Documentar | Servidor de ficheros | 09 Nov | SA |
+| Clientes |Hacer cliente linux | 09 Nov | AS |
 
 ### Cierre del Sprint 2
 
@@ -111,22 +111,22 @@ Al cerrar el sprint el tablón mostraba 18 tareas finalizadas en total (acumulan
 
 | Tarea | Detalle | Fecha | Asignado a |
 |---|---|---|---|
-| Fer diagrama | – | 19 Oct | AS |
-| Servidor de xarxa | Monitor de red | 26 Oct | SA |
-| Servidor BBDD | Servicio BBDD | 26 Oct | AS |
-| Servidor de xarxa | DHCP | 26 Oct | SA |
+| Fer diagrama | – | 19 Oct | SA |
+| Servidor de xarxa | Monitor de red | 26 Oct | AS |
+| Servidor BBDD | Servicio BBDD | 26 Oct | SA |
+| Servidor de xarxa | DHCP | 26 Oct | AS |
 | Estructurar Github | – | 26 Oct | JS |
 | Reestructurar git hub| añadir y eliminar apartados del proyecto | 02 Nov | JS |
-| Clientes |Hacer cliente windows | 09 Nov | SA |
-| Documentar | Servidor de red | 09 Nov | SA |
-| Documentar | Servidor de Base de dadas | 09 Nov | AS |
-| Documentar | Servidor de ficheros | 09 Nov | AS |
-| Clientes |Hacer cliente linux | 09 Nov | SA |
+| Clientes |Hacer cliente windows | 09 Nov | AS |
+| Documentar | Servidor de red | 09 Nov | AS |
+| Documentar | Servidor de Base de dadas | 09 Nov | SA |
+| Documentar | Servidor de ficheros | 09 Nov | SA |
+| Clientes |Hacer cliente linux | 09 Nov | AS |
 | Documentación | - | 13 Nov | SA, JS y AS |
 | Servidor Web | Aplicaion | 09 Nov | JS |
 | Servidor Web | Apache | 09 Nov | JS |
-| Servidor de ficheros | – | 09 Nov | AS |
-| Servidor de xarxa | DNS | 26 Oct (vencida) | SA |
+| Servidor de ficheros | – | 09 Nov | SA|
+| Servidor de xarxa | DNS | 26 Oct (vencida) | AS |
 
 **En curs (Doing): 3 tareas**
 
@@ -152,7 +152,7 @@ En el tercer sprint lo planteamos para comprobar el funcionamiento de cada servi
 | Comprobación servidor web | SA y AS |
 | Comprobación servidor Base de dadas | SA y AS |
 | Acabar de documentar las comprobaciones de servidores | SA y AS |
-| Firewall | SA |
+| Firewall | AS |
 | Comprobación del servidor de xarxa | SA y AS |
 | Sprint | Documentación | SA |
 
@@ -178,7 +178,7 @@ Pendiente de completar cuando cerremos el sprint.
 | Integrante | Sprint 1 | Sprint 2 | Sprint 3 |
 |---|---|---|---|
 | **JS** | Estructurar Github; Servidor Web SSH y Apache (en curso) | Servidor Web SSH, Apache + PHP y código PHP | Documentar la configuración del servidor web y la publicación de la App |
-| **AS** | Fer diagrama y Servidor BBDD; Servidor de ficheros | Configuración y Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
-| **SA** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y clientes (linux y windows) | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
+| **SA** | Fer diagrama y Servidor BBDD; Servidor de ficheros | Configuración y Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
+| **AS** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y clientes (linux y windows) | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
 
 La tarea de documentación general la hemos compartido los tres en todos los sprints.
