@@ -27,6 +27,8 @@ En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qu
 En el primer sprint definimos 11 tareas muy generales, agrupadas por servicio, pensando que podríamos acabarlo todos los servisios en el primer sprint.
 
 ### Inicio del Sprint 1
+<img width="678" height="294" alt="image" src="https://github.com/user-attachments/assets/8392cbdf-22c8-4f75-8c9e-be8140a8a704" />
+
 
 **Pendents backlog (To Do): 1 tarea**
 
@@ -84,6 +86,7 @@ Al cerrar el sprint teníamos 5 de las 11 tareas finalizadas, 1 en revisión, 3 
 | PC linux y windows | 02 Nov | AS|
 
 ---
+<img width="678" height="294" alt="image" src="https://github.com/user-attachments/assets/01923ade-9245-4736-93a5-368eb1cdf66a" />
 
 ## Sprint 2: tareas específicas con fechas
 
@@ -127,6 +130,7 @@ Al cerrar el sprint el tablón mostraba 18 tareas finalizadas en total (acumulan
 | Servidor Web | Apache | 09 Nov | JS |
 | Servidor de ficheros | – | 09 Nov | SA|
 | Servidor de xarxa | DNS | 26 Oct (vencida) | AS |
+<img width="568" height="422" alt="image" src="https://github.com/user-attachments/assets/d97f0ed9-b174-4bf3-b8d7-f3817d7828f4" />
 
 **En curs (Doing): 3 tareas**
 
@@ -182,3 +186,4 @@ Pendiente de completar cuando cerremos el sprint.
 | **AS** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y clientes (linux y windows) | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
 
 La tarea de documentación general la hemos compartido los tres en todos los sprints.
+
