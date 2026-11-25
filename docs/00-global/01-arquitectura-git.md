@@ -29,7 +29,7 @@ Este documento describe cómo está construida la infraestructura completa, por 
 
 La infraestructura es una arquitectura **multicapa** desplegada en NuvuletVDI (Isard). Un único router, `R-N06`, conecta tres redes y aplica NAT y firewall:
 
-- **Capa de presentación (DMZ):** servidor web `W-N06` (Apache + PHP) y servidor FTP `F-N06` (vsftpd con chroot).
+- **Capa de presentación (DMZ):** servidor web `W-N06` (Apache + PHP, con HTTPS y redirección desde el puerto 80) y servidor FTP `F-N06` (vsftpd con chroot).
 - **Capa de datos (Intranet):** base de datos `B-N06` (MySQL 8.0) con el dataset de equipamientos de OpenData Barcelona.
 - **Servicios de red (en el router):** DNS (Bind9), DHCP (isc-dhcp-server) y monitorización (Uptime Kuma en Docker).
 
@@ -37,10 +37,9 @@ Flujo principal de la aplicación: el cliente pide la página a `W-N06`, y `W-N0
 
 ## 2. Diagrama de red
 
-![Diagrama](docs/img/diagrama_de_red.png)
+![Diagrama](../img/diagrama.png)
 
-
-> **⚠️ PENDIENTE:** el diagrama no recoge `CLI-W-N06` (cliente de pruebas en la DMZ, `10.6.1.50`) que aparece en la documentación del servidor web. Decidir si se incluye o se elimina de la documentación.
+> **⚠️ PENDIENTE:** el diagrama no recoge `CLI-W-N06` (cliente de pruebas en la DMZ, `10.6.1.50`), que aparecía en una versión anterior de la documentación del servidor web. La documentación actual de `W-N06` ya no lo menciona: decidir si se incluye en el diagrama o se descarta definitivamente.
 
 ## 3. Redes y zonas
 
@@ -58,21 +57,23 @@ Flujo principal de la aplicación: el cliente pide la página a `W-N06`, y `W-N0
 | | | `enp2s0` | DMZ | `10.6.1.1/24` | Estática |
 | | | `enp3s0` | Intranet | `10.6.2.1/24` | Estática |
 | `W-N06` | Servidor web | `enp1s0` | NAT (Isard) | DHCP | DHCP |
-| | | `enp2s0` | DMZ | `10.6.1.10/24` | Estática |
+| | | `enp3s0` | DMZ | `10.6.1.10/24` | Estática |
 | `F-N06` | Servidor FTP | `enp1s0` | NAT (Isard) | `192.168.121.92/22` (ejemplo) | DHCP |
 | | | `enp2s0` | DMZ | `10.6.1.20/24` | Estática |
 | `B-N06` | Base de datos | `enp1s0` | NAT (Isard) | DHCP | DHCP |
-| | | `enp2s0` | Intranet | `10.6.2.10/24` | Estática |
+| | | `enp3s0` | Intranet | `10.6.2.10/24` | Estática |
 | `PC-LINUX-N06` | Cliente Linux | — | Intranet | `10.6.2.100–200` | DHCP (router) |
 | PC Windows | Cliente Windows | — | Intranet | `10.6.2.100–200` | DHCP (router) |
 
 Notas:
 
 - Las IPs del lado `Default` las asigna Isard por DHCP y **pueden cambiar**; no se usan en ninguna configuración del proyecto.
-- Todos los servidores tienen **dos interfaces**: una hacia la red `Default` (solo para instalar paquetes y acceder a GitHub) y otra hacia su zona (DMZ o Intranet).
-- `W-N06` solo tiene una ruta por defecto (por `enp1s0`) y una **ruta estática** `10.6.2.0/24 via 10.6.1.1` por `enp2s0` para llegar a la Intranet a través del router. Sin esta ruta, la aplicación no conecta con MySQL aunque el firewall esté bien.
+- Todos los servidores tienen **dos interfaces**: una hacia la red `Default` (solo para instalar paquetes, acceder a GitHub y gestión por SSH) y otra hacia su zona (DMZ o Intranet).
+- El nombre de la interfaz hacia la zona depende de la VM (`enp2s0` en `F-N06`, `enp3s0` en `W-N06` y `B-N06`). Se comprueba siempre con `ip -br a` antes de editar el Netplan.
+- `W-N06` solo tiene una ruta por defecto (por `enp1s0`) y una **ruta estática** `10.6.2.0/24 via 10.6.1.1` por `enp3s0` para llegar a la Intranet a través del router. Sin esta ruta, la aplicación no conecta con MySQL aunque el firewall esté bien.
+- `B-N06` tiene la ruta inversa `10.6.1.0/24 via 10.6.2.1` por `enp3s0`, necesaria para responder a `W-N06` por el router y no por la red `Default`.
 
-> **⚠️ PENDIENTE:** confirmar nombre de interfaz de `B-N06` hacia la Intranet (`enp2s0` según su documentación) y completar la IP del equipo Windows y su nombre de host.
+> **⚠️ PENDIENTE:** completar la IP del equipo Windows y su nombre de host (aún no documentado en `05-clientes.md`).
 
 ## 5. Servicios y puertos
 
@@ -82,7 +83,8 @@ Notas:
 | `R-N06` | DNS (Bind9) | 53/UDP y TCP | DMZ e Intranet |
 | `R-N06` | DHCP | 67-68/UDP | Solo Intranet (`enp3s0`) |
 | `R-N06` | Uptime Kuma (Docker) | 3001/TCP | Administración |
-| `W-N06` | Apache + PHP | 80/TCP | Clientes |
+| `W-N06` | Apache + PHP (HTTP, redirige a HTTPS) | 80/TCP | Clientes |
+| `W-N06` | Apache + PHP (HTTPS, certificado autofirmado) | 443/TCP | Clientes |
 | `W-N06` | SSH | 22/TCP | Administración |
 | `F-N06` | FTP (control) | 21/TCP | Clientes |
 | `F-N06` | FTP (datos pasivo) | 40000-40100/TCP | Clientes |
@@ -90,9 +92,7 @@ Notas:
 | `B-N06` | MySQL | 3306/TCP | **Solo `W-N06` (`10.6.1.10`)** |
 | `B-N06` | SSH | 22/TCP | Administración |
 
-Cortafuegos locales: `F-N06` y `B-N06` usan UFW con política `deny incoming`. Ver [6.2](#62-cortafuegos-locales-ufw).
-
-> **⚠️ PENDIENTE:** confirmar si `W-N06` tiene UFW activo y qué reglas lleva, y si Apache escucha también en 443.
+Cortafuegos locales: `W-N06`, `F-N06` y `B-N06` usan UFW con política `deny incoming`. Ver [6.2](#62-cortafuegos-locales-ufw).
 
 ## 6. Política de firewall y flujos permitidos
 
@@ -114,6 +114,7 @@ NAT: `iptables -t nat -A POSTROUTING -o enp1s0 -j MASQUERADE` (las dos redes int
 
 | Máquina | Política | Reglas permitidas |
 |---|---|---|
+| `W-N06` | `deny incoming` / `allow outgoing` | `22/tcp`, `80/tcp` y `443/tcp` desde cualquiera |
 | `B-N06` | `deny incoming` / `allow outgoing` | `22/tcp` desde cualquiera; `3306/tcp` solo desde `10.6.1.10` |
 | `F-N06` | `deny incoming` / `allow outgoing` | `22/tcp`, `21/tcp` y `40000:40100/tcp` desde cualquiera |
 
@@ -123,7 +124,7 @@ La base de datos tiene así **doble protección**: el router solo deja pasar a `
 
 | Origen | Destino | Puerto | Permitido | Motivo |
 |---|---|---|---|---|
-| Clientes (Intranet) | `W-N06` | TCP 80 | ✅ | Acceso a la aplicación (`http://w-n06.g06.lan`) |
+| Clientes (Intranet) | `W-N06` | TCP 80 (redirige) y 443 | ✅ | Acceso a la aplicación (`https://w-n06.g06.lan`) |
 | Clientes (Intranet) | `F-N06` | TCP 21 + 40000-40100 | ✅ | Acceso FTP |
 | Clientes (Intranet) | `B-N06` | TCP 3306 | ❌ | Lo bloquea el UFW de `B-N06` (solo acepta `W-N06`) |
 | `W-N06` | `B-N06` | TCP 3306 | ✅ | Consultas de la aplicación |
@@ -168,7 +169,15 @@ Solo escucha en `enp3s0` (Intranet).
 
 Resultado verificado en el cliente Linux: recibe IP por DHCP, `ping 8.8.8.8` responde y `ping r-n06` resuelve a `10.6.2.1`.
 
-> **⚠️ PENDIENTE:** los servidores (`W-N06`, `F-N06`, `B-N06`) no tienen configurado `10.6.2.1`/`10.6.1.1` como DNS, por lo que no resuelven `g06.lan` por nombre. Si se quiere que lo hagan, añadir `nameservers` en su Netplan y documentarlo.
+### 7.3 DNS en los servidores
+
+| Servidor | DNS en su Netplan |
+|---|---|
+| `W-N06` | `10.6.1.1` (`R-N06`, lado DMZ) |
+| `B-N06` | `10.6.2.1` (`R-N06`, lado Intranet) |
+| `F-N06` | No configurado |
+
+> **⚠️ PENDIENTE:** `F-N06` no tiene `nameservers` en su Netplan, así que no resuelve `g06.lan` por nombre. Si se quiere que lo haga, añadir `10.6.1.1` y documentarlo en `03-f-n06.md`. Confirmar también que Bind9 en `R-N06` responde por la interfaz de la DMZ (`10.6.1.1`), ya que `W-N06` lo usa como DNS.
 
 ## 8. Dependencias entre máquinas
 
@@ -206,8 +215,6 @@ sudo adduser bchecker
 sudo usermod -aG sudo bchecker
 ```
 
-Script reutilizable: [`scripts/crear_bchecker.sh`](../../scripts/crear_bchecker.sh) (idempotente: se puede ejecutar varias veces).
-
 Todas las máquinas tienen `openssh-server` instalado y habilitado:
 
 ```bash
@@ -222,9 +229,13 @@ sudo systemctl enable --now ssh
 | `F-N06` | `ssh bchecker@10.6.1.20` |
 | `B-N06` | `ssh bchecker@10.6.2.10` |
 
-> **Seguridad:** la contraseña `bchecker121` es solo de laboratorio, impuesta por el enunciado. En un entorno real se usaría autenticación por clave pública con `PasswordAuthentication no`, `PermitRootLogin no` y `AllowUsers`.
+**Desde dónde se administra cada máquina:**
 
-> **⚠️ PENDIENTE:** el cortafuegos de `B-N06` permite SSH desde cualquier origen, pero el router bloquea DMZ → Intranet. Anotar desde qué máquina se administra `B-N06` por SSH (un cliente de la Intranet, por ejemplo).
+- `W-N06` y `F-N06` (DMZ): desde un cliente de la Intranet, ya que la Intranet puede ir a cualquier sitio (regla 2 del router).
+- `B-N06` (Intranet): desde un cliente de la Intranet (`10.6.2.100–200`) o desde `R-N06` (`10.6.2.1`). **No** se puede desde la DMZ, porque la regla 5 del router bloquea DMZ → Intranet aunque el UFW de `B-N06` permita el 22.
+- Alternativa en todos los servidores: la interfaz `enp1s0` (red de gestión de Isard).
+
+> **Seguridad:** la contraseña `bchecker121` es solo de laboratorio, impuesta por el enunciado. En un entorno real se usaría autenticación por clave pública con `PasswordAuthentication no`, `PermitRootLogin no` y `AllowUsers`.
 
 ## 11. Git y flujo de trabajo
 
@@ -250,7 +261,7 @@ Host github.com
 
 Comprobación: `ssh -T git@github.com`.
 
-> **⚠️ PENDIENTE:** el índice del proyecto menciona un *Personal Access Token (PAT)*. Si los compañeros suben por HTTPS con PAT en lugar de clave SSH, describirlo aquí (alcance mínimo del token, caducidad y **nunca** incluir el token en el repositorio). Si todos usan SSH, eliminar la mención del PAT del título.
+> **⚠️ PENDIENTE:** el índice del proyecto (`README.md`) menciona un *Personal Access Token (PAT)*. Si los compañeros suben por HTTPS con PAT en lugar de clave SSH, describirlo aquí (alcance mínimo del token, caducidad y **nunca** incluir el token en el repositorio). Si todos usan SSH, eliminar la mención del PAT del título en el `README.md`.
 
 ### 11.2 Configuración inicial
 
@@ -267,7 +278,7 @@ git config --global pull.rebase true
 
 ```bash
 git status
-git add docs/02-w-n06/ app/ config/w-n06/
+git add docs/02-w-n06.md app/
 git commit -m "W-N06: descripción breve del cambio"
 git pull --rebase origin main
 git push origin main
@@ -276,9 +287,9 @@ git push origin main
 Reglas del equipo:
 
 1. Hacer `pull --rebase` **antes** de cada `push`.
-2. Cada integrante trabaja solo en sus carpetas (`docs/0X-*`, `config/*`), lo que evita conflictos.
+2. Cada integrante trabaja solo en sus archivos (`docs/0X-*.md`), lo que evita conflictos.
 3. Mensajes de commit con prefijo: `R-N06:`, `W-N06:`, `B-N06:`, `F-N06:`, `DOCS:`.
-4. No subir claves privadas ni temporales (ver `.gitignore`).
+4. No subir claves privadas ni ficheros temporales.
 
 | Situación | Solución |
 |---|---|
@@ -301,7 +312,7 @@ sudo systemctl reload apache2
 Edición → git add/commit → git push → (W-N06) git pull → rsync → Apache
 ```
 
-El servidor web siempre refleja el contenido de `main`.
+> **⚠️ PENDIENTE:** este procedimiento no coincide con la configuración real de `W-N06`, que publica en `/var/www/w-n06/public/` (`index.php` y `style.css`) y guarda `db.php` fuera del DocumentRoot, en `/etc/w-n06/db.php`. Además, los ficheros de `app/` están ahora guardados como `.md` (`index.php.md`, etc.), por lo que `rsync` no los dejaría como PHP ejecutable. Decidir si `app/` vuelve a contener los `.php` y `.css` reales y adaptar el destino del `rsync` (sin `--delete` sobre un directorio que mezcle otros ficheros).
 
 ## 12. Ficheros de configuración clave
 
@@ -312,12 +323,15 @@ El servidor web siempre refleja el contenido de `main`.
 | `R-N06` | `/etc/iptables/rules.v4` | NAT y reglas FORWARD |
 | `R-N06` | `/etc/bind/named.conf.options`, `/etc/bind/db.g06.lan` | DNS |
 | `R-N06` | `/etc/dhcp/dhcpd.conf` | DHCP |
-| `W-N06` | `/etc/netplan/01-netcfg.yaml` | IP y ruta a la Intranet |
-| `W-N06` | `/etc/apache2/sites-available/000-default.conf` | VirtualHost |
+| `W-N06` | `/etc/netplan/00-installer-config.yaml` | IP y ruta a la Intranet |
+| `W-N06` | `/etc/apache2/sites-available/w-n06.conf` y `w-n06-ssl.conf` | VirtualHosts HTTP (redirige) y HTTPS |
+| `W-N06` | `/etc/w-n06/db.php` | Credenciales de la BD (`640`, fuera del DocumentRoot) |
+| `W-N06` | `/etc/ssl/w-n06/` | Certificado autofirmado y clave |
 | `F-N06` | `/etc/vsftpd.conf`, `/etc/vsftpd.chroot_list` | FTP y chroot |
+| `B-N06` | `/etc/netplan/50-cloud-init.yaml` | IP y ruta a la DMZ |
 | `B-N06` | `/etc/mysql/mysql.conf.d/mysqld.cnf` | `bind-address` |
 
-Copias respaldadas en el repositorio: carpeta [`config/`](../../config/).
+La configuración de cada máquina está documentada paso a paso en su propio archivo (`docs/01-r-n06.md` a `docs/04-b-n06.md`).
 
 ## 13. Limitaciones conocidas y mejoras
 
@@ -328,7 +342,7 @@ Puntos detectados durante la revisión y que conviene reflejar en la memoria com
 | La política por defecto de `FORWARD` es `ACCEPT`: solo se bloquea explícitamente DMZ → Intranet. | Cambiar a `iptables -P FORWARD DROP` y dejar solo las reglas necesarias. |
 | La cadena `INPUT` del router también está en `ACCEPT`, y Uptime Kuma (`3001`) queda accesible desde la DMZ. | Restringir `INPUT` (SSH, DNS, DHCP y `3001` solo desde la Intranet). |
 | Docker modifica `iptables`; si se cambian reglas hay que reiniciar Docker. | Documentar el orden: firewall primero, Docker después. |
-| Credenciales en claro en `app/db.php` y en la documentación. | Variables de entorno o fichero fuera del `DocumentRoot` con permisos restringidos. |
+| La contraseña de `bchecker` aparece en claro en la documentación (la impone el enunciado). Las credenciales de la BD ya están fuera del DocumentRoot (`/etc/w-n06/db.php`, `640`) y en el repositorio solo hay marcadores `<PASSWORD_...>`. | En un entorno real, no documentar contraseñas y gestionar los secretos con variables de entorno o un gestor de secretos. |
 | FTP sin cifrado (vsftpd sin TLS). | Activar FTPS (`ssl_enable=YES`) o usar SFTP. |
 | Los servidores tienen una segunda interfaz directa a Internet, que evita el router. | En un entorno real, sacar todo el tráfico por el router. |
 
