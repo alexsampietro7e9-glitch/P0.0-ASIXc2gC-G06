@@ -18,7 +18,7 @@ En este documento recogemos cómo hemos organizado el trabajo en cada sprint, qu
 |---|---|---|---|
 | Sprint 1 | Tareas genéricas por servicio, sin fechas | 0 de 11 finalizadas | 5 de 11 finalizadas |
 | Sprint 2 | Tareas específicas repartidas por fechas | 5 de 11 finalizadas | 21 finalizadas acumuladas |
-| Sprint 3 | Documentación, comprobaciones, firewall y cierre del servidor web | 21 finalizadas acumuladas | En curso |
+| Sprint 3 | Documentación, comprobaciones, firewall y cierre del servidor web | 21 finalizadas acumuladas | Todas las tareas finalizadas |
 
 ---
 
@@ -167,13 +167,15 @@ En el tercer sprint lo planteamos para comprobar el funcionamiento de cada servi
 | Documentar la configuració del servidor web i la publicació de l'App | 09 Nov (vencida) | JS |
 
 
-### Pendiente del servidor web
+### Cierre del servidor web y marcha de JS
 
-Del servidor web ya tenemos terminados SSH, Apache + PHP y la publicación del código PHP. Nos falta documentar su configuración y la publicación de la aplicación (tarea de JS, con la fecha del 09 Nov ya vencida) y terminar de desarrollar la web. Cuando lo cerremos, actualizaremos este documento y lo enlazaremos con la documentación de arquitectura y de administración.
+Del servidor web teníamos terminados SSH, Apache + PHP y la publicación del código PHP, y quedaba documentar su configuración y la publicación de la aplicación (tarea de JS, con la fecha del 09 Nov ya vencida).
+
+Durante este último sprint, Jheremy Sanchez, el encargado del servidor web, tuvo que dejar el proyecto por su Erasmus. Antes de irse nos pasó toda la configuración del servicio web (Apache + PHP, publicación de la aplicación y seguridad), y gracias a ello el resto del equipo pudo replicarla y cerrar el servidor web sin que se bloqueara ninguna otra tarea. La configuración queda recogida en la documentación del servidor web (`02-w-n06.md`) y enlazada con la de arquitectura y administración.
 
 ### Cierre del Sprint 3
 
-Pendiente de completar cuando cerremos el sprint.
+Al cerrar el sprint todas las tareas quedaron finalizadas con éxito: la documentación (manuales de cliente y de administrador, arquitectura y documentación de los sprints), las comprobaciones de los cuatro servidores, la auditoría del firewall y el cierre del servidor web. No quedó ninguna tarea pendiente, en curso, bloqueada ni en revisión, por lo que damos por completado el proyecto.
 
 ---
 
@@ -181,9 +183,8 @@ Pendiente de completar cuando cerremos el sprint.
 
 | Integrante | Sprint 1 | Sprint 2 | Sprint 3 |
 |---|---|---|---|
-| **JS** | Estructurar Github; Servidor Web SSH y Apache (en curso) | Servidor Web SSH, Apache + PHP y código PHP | Documentar la configuración del servidor web y la publicación de la App |
+| **JS** | Estructurar Github; Servidor Web SSH y Apache (en curso) | Servidor Web SSH, Apache + PHP y código PHP | Documentar la configuración del servidor web y la publicación de la App; traspaso de la configuración al equipo antes de su Erasmus |
 | **SA** | Fer diagrama y Servidor BBDD; Servidor de ficheros | Configuración y Documentación del servidor de ficheros | Documentar manual Admin, comprobaciones de servidores y Sprint (Documentación) |
 | **AS** | Servidor de xarxa (Monitor de red y DHCP; DNS en revisión) | Uptime Kuma y clientes (linux y windows) | Documentar Manual clientes y Arquitectura, Firewall y comprobaciones de servidores |
 
 La tarea de documentación general la hemos compartido los tres en todos los sprints.
-
